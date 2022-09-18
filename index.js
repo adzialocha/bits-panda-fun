@@ -4,6 +4,10 @@ import { Command } from 'commander';
 
 import { loadKeyPair } from './keyPair.mjs';
 
+// ~~~~~~~~~~~~~~~~~~
+// Get user arguments
+// ~~~~~~~~~~~~~~~~~~
+
 const program = new Command();
 
 program
@@ -18,18 +22,15 @@ program
 program.parse();
 const options = program.opts();
 
+// ~~~~~~~~~~~~~~~~~~~~
+// Initialise variables
+// ~~~~~~~~~~~~~~~~~~~~
+
 const keyPair = loadKeyPair(options.privateKey);
 
-console.log(`
-⠀⠀⠀⠀⠀⢀⣴⣶⣦⡄⢀⣀⣀⣀⣀⣀⢀⣴⣶⣦⣄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⡄⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠙⠿⠁⠀⣠⣤⡄⠀⠀⢠⣤⣄⠀⠈⢿⠟⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠇⠀⢸⣿⣿⠳⣶⣶⡞⢿⣿⡇⢠⣼⢶⢶⣤⡀⠀⠀
-⠀⠀⢀⣾⣿⣿⣿⣦⠈⠛⠋⠐⠤⠣⠀⠘⠛⠁⢿⡽⠛⠛⣼⡇⠀⠀
-⠉⠉⠙⠿⢿⣿⡿⠟⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉
-
-${chalk.bold('Public Key')}: ${chalk.blue(keyPair.publicKey())}
-`);
+// ~~~~~~~~~~~~~~~~
+// Define all views
+// ~~~~~~~~~~~~~~~~
 
 async function showAll() {
   console.log('Hello! There is nothing to see yet ..!');
@@ -73,5 +74,20 @@ async function showNavigation() {
     // @TODO
   }
 }
+
+// ~~~~~~~
+// Run it!
+// ~~~~~~~
+
+console.log(`
+⠀⠀⠀⠀⠀⢀⣴⣶⣦⡄⢀⣀⣀⣀⣀⣀⢀⣴⣶⣦⣄⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⡄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠙⠿⠁⠀⣠⣤⡄⠀⠀⢠⣤⣄⠀⠈⢿⠟⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠇⠀⢸⣿⣿⠳⣶⣶⡞⢿⣿⡇⢠⣼⢶⢶⣤⡀⠀⠀
+⠀⠀⢀⣾⣿⣿⣿⣦⠈⠛⠋⠐⠤⠣⠀⠘⠛⠁⢿⡽⠛⠛⣼⡇⠀⠀
+⠉⠉⠙⠿⢿⣿⡿⠟⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉
+
+${chalk.bold('Public Key')}: ${chalk.blue(keyPair.publicKey())}
+`);
 
 showAll();
