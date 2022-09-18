@@ -3,6 +3,7 @@ import prompts from 'prompts';
 import { Command } from 'commander';
 
 import { loadKeyPair } from './keyPair.mjs';
+import { generateMap, printMap } from './map.mjs';
 
 // ~~~~~~~~~~~~~~~~~~
 // Get user arguments
@@ -51,6 +52,8 @@ function printTitle(title) {
 async function showAll() {
   printTitle('Show all documents');
   console.log('Hello! There is nothing to see yet ..!');
+  const map = generateMap(2, 25);
+  printMap(map);
   showNavigation();
 }
 
