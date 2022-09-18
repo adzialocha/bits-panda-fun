@@ -32,13 +32,30 @@ const keyPair = loadKeyPair(options.privateKey);
 // Define all views
 // ~~~~~~~~~~~~~~~~
 
+function printTitle(title) {
+  const line = title
+    .split('')
+    .reduce((acc, _, index) => {
+      acc.push(index % 2 === 0 ? '☡' : ' ');
+      return acc;
+    }, [])
+    .join('');
+
+  console.log();
+  console.log(chalk.bgMagenta.black(line));
+  console.log(chalk.bgMagenta.black(title));
+  console.log(chalk.bgMagenta.black(line));
+  console.log();
+}
+
 async function showAll() {
+  printTitle('Show all documents');
   console.log('Hello! There is nothing to see yet ..!');
   showNavigation();
 }
 
 async function showNavigation() {
-  console.log();
+  printTitle('Navigation');
 
   const { selection } = await prompts({
     type: 'select',
@@ -61,6 +78,10 @@ async function showNavigation() {
         title: 'Delete',
         value: 'delete',
       },
+      {
+        title: 'Exit',
+        value: 'exit',
+      },
     ],
   });
 
@@ -72,6 +93,8 @@ async function showNavigation() {
     // @TODO
   } else if (selection === 'delete') {
     // @TODO
+  } else if (selection === 'exit') {
+    printTitle('Good bye!');
   }
 }
 
@@ -87,7 +110,6 @@ console.log(`
 ⠀⠀⢀⣾⣿⣿⣿⣦⠈⠛⠋⠐⠤⠣⠀⠘⠛⠁⢿⡽⠛⠛⣼⡇⠀⠀
 ⠉⠉⠙⠿⢿⣿⡿⠟⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉
 
-${chalk.bold('Public Key')}: ${chalk.blue(keyPair.publicKey())}
-`);
+${chalk.bold('Public Key')}: ${chalk.blue(keyPair.publicKey())}`);
 
 showAll();
