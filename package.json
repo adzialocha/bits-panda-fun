@@ -1,9 +1,12 @@
 {
   "name": "bits-panda-fun",
   "version": "1.0.0",
-  "description": "",
+  "type": "module",
+  "description": "p2panda hacksession with bitspossessed",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adzialocha/bits-panda-fun.git"
@@ -15,9 +18,12 @@
   },
   "homepage": "https://github.com/adzialocha/bits-panda-fun#readme",
   "dependencies": {
+    "chalk": "^5.0.1",
+    "commander": "^9.4.0",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
-    "p2panda-js": "^0.6.0"
+    "p2panda-js": "^0.6.0",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "eslint": "^8.23.1",
